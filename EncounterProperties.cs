@@ -13,9 +13,9 @@ namespace Encounters
 
         public EncounterProperties()
         {
-            CharactersList = new List<Characters>(); 
-            Round = 1; 
-            
+            CharactersList = new List<Characters>();
+            Round = 1;
+
         }
 
         public void AddCharacter(Characters character)
@@ -58,5 +58,4 @@ namespace Encounters
             return Round;
         }
     }
-
 }
