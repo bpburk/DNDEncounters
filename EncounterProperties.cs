@@ -11,6 +11,8 @@ namespace Encounters
         public List<Characters> CharactersList { get; private set; }
         public int Round { get; private set; }
 
+        private static int numberOfCharacters = 0;
+
         public EncounterProperties()
         {
             CharactersList = new List<Characters>();
@@ -21,11 +23,13 @@ namespace Encounters
         public void AddCharacter(Characters character)
         {
             CharactersList.Add(character);
+            numberOfCharacters++;
         }
 
         public void RemoveCharacter(Characters character)
         {
             CharactersList.Remove(character);
+            numberOfCharacters--;
         }
         public List<Characters> getList()
         {
@@ -56,6 +60,11 @@ namespace Encounters
         public int getRound()
         {
             return Round;
+        }
+
+        public int getNumber()
+        {
+            return numberOfCharacters;
         }
     }
 }

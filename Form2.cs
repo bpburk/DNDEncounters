@@ -109,11 +109,18 @@ namespace Encounters
 
         private void button5_Click(object sender, EventArgs e)
         {
-            encounterProperties.orderList();
-            this.Hide();
-            Form5 f5 = new Form5();
-            f5.getEncounter(encounterProperties);
-            f5.Show();
+            if(encounterProperties.getNumber() < 2)
+            {
+                MessageBox.Show("Must have 2 characters added to encounter");
+            }
+            else
+            {
+                encounterProperties.orderList();
+                this.Hide();
+                Form5 f5 = new Form5();
+                f5.getEncounter(encounterProperties);
+                f5.Show();
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)

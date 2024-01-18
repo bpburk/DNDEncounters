@@ -70,7 +70,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 390);
+            this.label2.Location = new System.Drawing.Point(82, 342);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(21, 13);
             this.label2.TabIndex = 1;
@@ -79,7 +79,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 316);
+            this.label3.Location = new System.Drawing.Point(74, 284);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 2;
@@ -88,7 +88,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 246);
+            this.label4.Location = new System.Drawing.Point(57, 224);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 3;
@@ -97,7 +97,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 106);
+            this.label5.Location = new System.Drawing.Point(42, 104);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 4;
@@ -107,7 +107,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(28, 173);
+            this.label6.Location = new System.Drawing.Point(32, 164);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 13);
             this.label6.TabIndex = 5;
@@ -122,7 +122,7 @@
             // 
             // dexBox
             // 
-            this.dexBox.Location = new System.Drawing.Point(112, 314);
+            this.dexBox.Location = new System.Drawing.Point(112, 282);
             this.dexBox.Maximum = new decimal(new int[] {
             20,
             0,
@@ -134,14 +134,14 @@
             // 
             // ACBox
             // 
-            this.ACBox.Location = new System.Drawing.Point(112, 388);
+            this.ACBox.Location = new System.Drawing.Point(112, 342);
             this.ACBox.Name = "ACBox";
             this.ACBox.Size = new System.Drawing.Size(120, 20);
             this.ACBox.TabIndex = 8;
             // 
             // currentHealthBox
             // 
-            this.currentHealthBox.Location = new System.Drawing.Point(112, 171);
+            this.currentHealthBox.Location = new System.Drawing.Point(112, 162);
             this.currentHealthBox.Maximum = new decimal(new int[] {
             5000,
             0,
@@ -153,7 +153,7 @@
             // 
             // maxHealthBox
             // 
-            this.maxHealthBox.Location = new System.Drawing.Point(112, 104);
+            this.maxHealthBox.Location = new System.Drawing.Point(112, 102);
             this.maxHealthBox.Maximum = new decimal(new int[] {
             5000,
             0,
@@ -165,7 +165,7 @@
             // 
             // initiativeBox
             // 
-            this.initiativeBox.Location = new System.Drawing.Point(112, 239);
+            this.initiativeBox.Location = new System.Drawing.Point(112, 222);
             this.initiativeBox.Maximum = new decimal(new int[] {
             20,
             0,
@@ -177,9 +177,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(31, 441);
+            this.button1.Location = new System.Drawing.Point(32, 402);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(184, 23);
+            this.button1.Size = new System.Drawing.Size(200, 23);
             this.button1.TabIndex = 12;
             this.button1.Text = "Add Character to Encounter";
             this.button1.UseVisualStyleBackColor = true;
@@ -201,25 +201,25 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(248, 35);
             this.button2.TabIndex = 14;
-            this.button2.Text = "Input Character Information";
+            this.button2.Text = "Input Character Data";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(32, 481);
+            this.button3.Location = new System.Drawing.Point(32, 440);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(200, 23);
             this.button3.TabIndex = 15;
-            this.button3.Text = "Save Data";
+            this.button3.Text = "Save Character Data";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(140, 481);
+            this.button4.Location = new System.Drawing.Point(32, 478);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(200, 23);
             this.button4.TabIndex = 16;
             this.button4.Text = "Clear";
             this.button4.UseVisualStyleBackColor = true;
@@ -261,7 +261,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(248, 35);
             this.button6.TabIndex = 20;
-            this.button6.Text = "Delete Character Information";
+            this.button6.Text = "Delete Character Data";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
