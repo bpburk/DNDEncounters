@@ -10,12 +10,14 @@ using System.Windows.Forms;
 
 namespace Encounters
 {
-    public partial class Form5 : Form
+    public partial class Form5 : System.Windows.Forms.Form
     {
-        DataTable characterTable;
+        public DataTable characterTable;
         DataTable encounterTable;
-        EncounterProperties encounterProperties = new EncounterProperties();
+        EncounterProperties encounterProperties;
         int count = 0;
+        Form5 f5;
+        string notes = string.Empty;
 
         public Form5()
         {
@@ -36,6 +38,7 @@ namespace Encounters
             characterTable.Columns.Add("Dex", typeof(int));
             characterTable.Columns.Add("AC", typeof(int));
             characterTable.Columns.Add("Max Health", typeof(int));
+            characterTable.Columns.Add("Notes", typeof(string));
 
             encounterTable = new DataTable("Encounters");
             encounterTable.Columns.Add("Date", typeof(string));
@@ -55,6 +58,7 @@ namespace Encounters
             characterDataTable.Columns["Dex"].Visible = false;
             characterDataTable.Columns["AC"].Visible = false;
             characterDataTable.Columns["Max Health"].Visible = false;
+            characterDataTable.Columns["Notes"].Visible = false;
             listBox1.DataSource = encounterProperties.getList();
             textChange();
         }
@@ -89,9 +93,6 @@ namespace Encounters
                         $"{Convert.ToInt32(numericUpDown1.Value)} points. Their HP is now {selectedCharacter.currentHealth}.";
                 }
                 eventBox.AppendText(Environment.NewLine);
-                encounterProperties.RemoveCharacter(selectedCharacter);
-                encounterProperties.AddCharacter(selectedCharacter);
-                encounterProperties.orderList();
                 updateList();
                 textChange();
             }
@@ -115,12 +116,14 @@ namespace Encounters
                         $"{Convert.ToInt32(numericUpDown1.Value)} points. Their HP is now {selectedCharacter.currentHealth}.";
                 }
                 eventBox.AppendText(Environment.NewLine);
-                encounterProperties.RemoveCharacter(selectedCharacter);
-                encounterProperties.AddCharacter(selectedCharacter);
-                encounterProperties.orderList();
                 updateList();
                 textChange();
             }
+        }
+
+        public void getForm5(Form5 f5)
+        {
+            this.f5 = f5;
         }
 
         public void updateList()
@@ -141,12 +144,15 @@ namespace Encounters
                 ACBox.Value = Convert.ToDecimal(characterTable.Rows[index].ItemArray[2]);
                 maxHealthBox.Value = Convert.ToDecimal(characterTable.Rows[index].ItemArray[3]);
                 currentHealthBox.Value = Convert.ToDecimal(characterTable.Rows[index].ItemArray[3]);
+                notes = characterTable.Rows[index].ItemArray[4].ToString();
             }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             Characters character = new Characters(nameBox.Text, Convert.ToInt32(ACBox.Value), Convert.ToInt32(initiativeBox.Value), Convert.ToInt32(dexBox.Value), Convert.ToInt32(maxHealthBox.Value), Convert.ToInt32(currentHealthBox.Value));
+            character.setNotes(notes);
+            notes = string.Empty;
             if (character.initiative > encounterProperties.CharactersList[count].initiative)
                 count++;
             eventBox.Text += $"Round {encounterProperties.getRound()}: {character.getName()} has been added to the encounter. Initiative: {character.initiative}";
@@ -158,8 +164,16 @@ namespace Encounters
 
         private void button6_Click(object sender, EventArgs e)
         {
-            encounterTable.Rows.Add($"{encounterName.Text} " + DateTime.Now.ToString(), eventBox.Text);
-            encounterTable.WriteXml("encounterHistory.xml");
+            if (!(encounterName.Text == ""))
+            {
+                encounterTable.Rows.Add($"{encounterName.Text} " + DateTime.Now.ToString(), eventBox.Text);
+                encounterTable.WriteXml("encounterHistory.xml");
+            }
+            else
+            {
+                MessageBox.Show("Encounter must have a name.");
+            }
+            
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -176,6 +190,33 @@ namespace Encounters
         private void Form5_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void tempHealthButton_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItems.Count > 0 && Convert.ToInt32(numericUpDown1.Value) > 0)
+            {
+                Characters selectedCharacter = (Characters)listBox1.SelectedItem;
+                selectedCharacter.setTempHealth(Convert.ToInt32(numericUpDown1.Value));
+                eventBox.Text += $"Round: {encounterProperties.getRound()}: {encounterProperties.CharactersList[count].getName()} gave {selectedCharacter.getName()} " +
+                       $"{Convert.ToInt32(numericUpDown1.Value)} temporary hit points. Their HP is now {selectedCharacter.currentHealth + selectedCharacter.tempHealth}.";
+                eventBox.AppendText(Environment.NewLine);
+                updateList();
+            }    
+        }
+
+        private void characterNotesButton_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItems.Count > 0)
+            {
+                Characters selectedCharacter = (Characters)listBox1.SelectedItem;
+                characterNotesPage characterNotes = new characterNotesPage();
+                characterNotes.getNotes(selectedCharacter.getNotes());
+                characterNotes.getCharacter(selectedCharacter);
+                characterNotes.getEncounterProperties(encounterProperties);
+                characterNotes.getForm(f5);
+                characterNotes.Show();
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Encounters
 {
-    public partial class Form1 : Form
+    public partial class Form1 : System.Windows.Forms.Form
     {
         DataTable encounterTable;
         public Form1()

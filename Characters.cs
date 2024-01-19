@@ -19,10 +19,11 @@ namespace Encounters
         public int currentHealth { get; set; }
         public int maxHealth { get; set; }
         public int tempHealth { get; set; }
+        private string characterNotes { get; set; }
 
         public override string ToString()
         {
-            return $"{name} - Initiative: {initiative} - Health: {currentHealth} - AC: {AC}";
+            return $"{name} - Initiative: {initiative} - Health: {currentHealth} + {tempHealth} - AC: {AC}";
         }
             public Characters(string name, int aC, int initiative,  int dex, int maxHealth, int currentHealth)
         {
@@ -76,15 +77,30 @@ namespace Encounters
             }
         }
 
+        public void setTempHealth(int amount)
+        {
+            tempHealth = amount;
+        }
+
         public void Heal(int amount)
         {
             currentHealth += amount;
-            if (currentHealth > maxHealth) currentHealth = maxHealth;
+            if (currentHealth > maxHealth) currentHealth = maxHealth + tempHealth;
         }
 
         public String getName()
         {
             return name;
         }
-    }
+
+        public void setNotes(string notes)
+        {
+            characterNotes = notes;
+        }
+
+        public string getNotes()
+        {
+            return characterNotes;
+        }
+}
 }

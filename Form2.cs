@@ -12,8 +12,9 @@ using System.Xml.Serialization;
 
 namespace Encounters
 {
-    public partial class Form2 : Form
+    public partial class Form2 : System.Windows.Forms.Form
     {
+        GlobalVariables globalVariables;
         DataTable characterTable;
         EncounterProperties encounterProperties = new EncounterProperties();
 
@@ -34,6 +35,7 @@ namespace Encounters
             characterTable.Columns.Add("Dex", typeof(int));
             characterTable.Columns.Add("AC", typeof(int));
             characterTable.Columns.Add("Max Health", typeof(int));
+            characterTable.Columns.Add("Notes", typeof(string));
             
 
             var dataSet = new DataSet();
@@ -46,6 +48,7 @@ namespace Encounters
             characterDataTable.Columns["Dex"].Visible = false;
             characterDataTable.Columns["AC"].Visible = false;
             characterDataTable.Columns["Max Health"].Visible = false;
+            characterDataTable.Columns["Notes"].Visible = false;
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -56,6 +59,7 @@ namespace Encounters
         private void button1_Click(object sender, EventArgs e)
         {
             Characters character = new Characters(nameBox.Text, Convert.ToInt32(ACBox.Value), Convert.ToInt32(initiativeBox.Value), Convert.ToInt32(dexBox.Value), Convert.ToInt32(maxHealthBox.Value), Convert.ToInt32(currentHealthBox.Value));
+            character.setNotes(GlobalVariables.notes);
             encounterProperties.AddCharacter(character);
             updateList();
         }
@@ -78,12 +82,13 @@ namespace Encounters
                 ACBox.Value = Convert.ToDecimal(characterTable.Rows[index].ItemArray[2]);
                 maxHealthBox.Value = Convert.ToDecimal(characterTable.Rows[index].ItemArray[3]);
                 currentHealthBox.Value = Convert.ToDecimal(characterTable.Rows[index].ItemArray[3]);
+                GlobalVariables.notes = characterTable.Rows[index].ItemArray[4].ToString();
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            characterTable.Rows.Add(nameBox.Text, dexBox.Value, ACBox.Value, maxHealthBox.Value);
+            characterTable.Rows.Add(nameBox.Text, dexBox.Value, ACBox.Value, maxHealthBox.Value, GlobalVariables.notes);
             characterTable.WriteXml("characters.xml");
         }
 
@@ -95,6 +100,7 @@ namespace Encounters
             currentHealthBox.Value = 0;
             initiativeBox.Value = 0;
             dexBox.Value = 0;
+            GlobalVariables.notes = string.Empty;
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -119,6 +125,7 @@ namespace Encounters
                 this.Hide();
                 Form5 f5 = new Form5();
                 f5.getEncounter(encounterProperties);
+                f5.getForm5(f5);
                 f5.Show();
             }
         }
@@ -133,6 +140,19 @@ namespace Encounters
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void characterNotes_Click(object sender, EventArgs e)
+        {
+            characterNotesPage notePage = new characterNotesPage();
+            notePage.getNotes(GlobalVariables.notes);
+            notePage.getCheck(true);
+            notePage.Show();
+        }
+
+        public void getNotes(string textbox)
+        {
+            GlobalVariables.notes = textbox;
         }
     }
 }

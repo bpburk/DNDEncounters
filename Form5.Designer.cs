@@ -54,6 +54,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.encounterName = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
+            this.tempHealthButton = new System.Windows.Forms.Button();
+            this.characterNotesButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.characterDataTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dexBox)).BeginInit();
@@ -100,7 +102,7 @@
             // 
             this.button2.Location = new System.Drawing.Point(374, 108);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(284, 23);
+            this.button2.Size = new System.Drawing.Size(168, 23);
             this.button2.TabIndex = 3;
             this.button2.Text = "Attack";
             this.button2.UseVisualStyleBackColor = true;
@@ -108,9 +110,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(664, 108);
+            this.button3.Location = new System.Drawing.Point(566, 108);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(262, 23);
+            this.button3.Size = new System.Drawing.Size(168, 23);
             this.button3.TabIndex = 4;
             this.button3.Text = "Heal";
             this.button3.UseVisualStyleBackColor = true;
@@ -298,11 +300,33 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // tempHealthButton
+            // 
+            this.tempHealthButton.Location = new System.Drawing.Point(758, 108);
+            this.tempHealthButton.Name = "tempHealthButton";
+            this.tempHealthButton.Size = new System.Drawing.Size(168, 23);
+            this.tempHealthButton.TabIndex = 26;
+            this.tempHealthButton.Text = "Add Temp Health";
+            this.tempHealthButton.UseVisualStyleBackColor = true;
+            this.tempHealthButton.Click += new System.EventHandler(this.tempHealthButton_Click);
+            // 
+            // characterNotesButton
+            // 
+            this.characterNotesButton.Location = new System.Drawing.Point(12, 652);
+            this.characterNotesButton.Name = "characterNotesButton";
+            this.characterNotesButton.Size = new System.Drawing.Size(356, 22);
+            this.characterNotesButton.TabIndex = 27;
+            this.characterNotesButton.Text = "Check Character Notes";
+            this.characterNotesButton.UseVisualStyleBackColor = true;
+            this.characterNotesButton.Click += new System.EventHandler(this.characterNotesButton_Click);
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1473, 751);
+            this.Controls.Add(this.characterNotesButton);
+            this.Controls.Add(this.tempHealthButton);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.encounterName);
             this.Controls.Add(this.label7);
@@ -371,5 +395,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox encounterName;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button tempHealthButton;
+        private System.Windows.Forms.Button characterNotesButton;
     }
 }
