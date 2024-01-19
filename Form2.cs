@@ -14,7 +14,6 @@ namespace Encounters
 {
     public partial class Form2 : System.Windows.Forms.Form
     {
-        GlobalVariables globalVariables;
         DataTable characterTable;
         EncounterProperties encounterProperties = new EncounterProperties();
 
@@ -58,10 +57,17 @@ namespace Encounters
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Characters character = new Characters(nameBox.Text, Convert.ToInt32(ACBox.Value), Convert.ToInt32(initiativeBox.Value), Convert.ToInt32(dexBox.Value), Convert.ToInt32(maxHealthBox.Value), Convert.ToInt32(currentHealthBox.Value));
-            character.setNotes(GlobalVariables.notes);
-            encounterProperties.AddCharacter(character);
-            updateList();
+            if(nameBox.Text == "")
+            {
+                MessageBox.Show("Character must have a name");
+            }
+            else
+            {
+                Characters character = new Characters(nameBox.Text, Convert.ToInt32(ACBox.Value), Convert.ToInt32(initiativeBox.Value), Convert.ToInt32(dexBox.Value), Convert.ToInt32(maxHealthBox.Value), Convert.ToInt32(currentHealthBox.Value));
+                character.setNotes(GlobalVariables.notes);
+                encounterProperties.AddCharacter(character);
+                updateList();
+            }
         }
 
         public void updateList()
@@ -88,8 +94,15 @@ namespace Encounters
 
         private void button3_Click(object sender, EventArgs e)
         {
-            characterTable.Rows.Add(nameBox.Text, dexBox.Value, ACBox.Value, maxHealthBox.Value, GlobalVariables.notes);
-            characterTable.WriteXml("characters.xml");
+            if (nameBox.Text == "")
+            {
+                MessageBox.Show("Character must have a name");
+            }
+            else
+            {
+                characterTable.Rows.Add(nameBox.Text, dexBox.Value, ACBox.Value, maxHealthBox.Value, GlobalVariables.notes);
+                characterTable.WriteXml("characters.xml");
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)

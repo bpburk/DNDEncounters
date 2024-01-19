@@ -66,5 +66,20 @@ namespace Encounters
         {
             return numberOfCharacters;
         }
+
+        public string getDamageList()
+        {
+            string damageOrder = Environment.NewLine;
+            damageOrder += "---------- Damage Done By Character ----------";
+            damageOrder += Environment.NewLine;
+            List<Characters> orderByDamage = new List<Characters>();
+            orderByDamage = CharactersList.OrderByDescending(p => p.damageDone).ToList();
+            for(int i = 0; i < numberOfCharacters; i++)
+            {
+                damageOrder += $"{orderByDamage[i].name}: {orderByDamage[i].damageDone} Damage";
+                damageOrder += Environment.NewLine;
+            }
+            return damageOrder;
+        }
     }
 }

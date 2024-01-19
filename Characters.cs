@@ -21,6 +21,8 @@ namespace Encounters
         public int tempHealth { get; set; }
         private string characterNotes { get; set; }
 
+        public int damageDone { get; set; } = 0;
+
         public override string ToString()
         {
             return $"{name} - Initiative: {initiative} - Health: {currentHealth} + {tempHealth} - AC: {AC}";
@@ -101,6 +103,11 @@ namespace Encounters
         public string getNotes()
         {
             return characterNotes;
+        }
+
+        public void encounterDamage(int damage)
+        {
+            damageDone += damage;
         }
 }
 }

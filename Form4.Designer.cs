@@ -58,7 +58,7 @@
             this.Controls.Add(this.saveNotes);
             this.Controls.Add(this.textBox1);
             this.Name = "characterNotesPage";
-            this.Text = "Form4";
+            this.Text = "Note Page";
             this.ResumeLayout(false);
             this.PerformLayout();
 

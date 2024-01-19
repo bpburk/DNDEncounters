@@ -88,6 +88,7 @@ namespace Encounters
                     eventBox.Text += $"Round: {encounterProperties.getRound()}: {encounterProperties.CharactersList[count].getName()} missed their attack on {selectedCharacter.getName()}.";
                 else
                 {
+                    encounterProperties.CharactersList[count].encounterDamage(Convert.ToInt32(numericUpDown1.Value));
                     selectedCharacter.TakeDamage(Convert.ToInt32(numericUpDown1.Value));
                     eventBox.Text += $"Round: {encounterProperties.getRound()}: {encounterProperties.CharactersList[count].getName()} attacked {selectedCharacter.getName()} for " +
                         $"{Convert.ToInt32(numericUpDown1.Value)} points. Their HP is now {selectedCharacter.currentHealth}.";
@@ -166,7 +167,7 @@ namespace Encounters
         {
             if (!(encounterName.Text == ""))
             {
-                encounterTable.Rows.Add($"{encounterName.Text} " + DateTime.Now.ToString(), eventBox.Text);
+                encounterTable.Rows.Add($"{encounterName.Text} " + DateTime.Now.ToString(), eventBox.Text + encounterProperties.getDamageList());
                 encounterTable.WriteXml("encounterHistory.xml");
             }
             else
