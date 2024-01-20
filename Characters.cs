@@ -20,8 +20,8 @@ namespace Encounters
         public int maxHealth { get; set; }
         public int tempHealth { get; set; }
         private string characterNotes { get; set; }
-
         public int damageDone { get; set; } = 0;
+        private string ID { get; set; } = string.Empty;
 
         public override string ToString()
         {
@@ -64,7 +64,7 @@ namespace Encounters
             
         }
 
-        public void TakeDamage(int damage)
+        public void takeDamage(int damage)
         {
             // Subtract damage from temp health first, if any
             int effectiveDamage = damage - tempHealth;
@@ -108,6 +108,15 @@ namespace Encounters
         public void encounterDamage(int damage)
         {
             damageDone += damage;
+        }
+        public void setID(string ID)
+        {
+            this.ID = ID;
+        }
+
+        public string getID()
+        {
+            return ID;
         }
 }
 }

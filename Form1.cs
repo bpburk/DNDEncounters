@@ -38,6 +38,7 @@ namespace Encounters
         {
             this.Hide();
             Form2 f2 = new Form2();
+            f2.getF2(f2);
             f2.Show();
         }
 

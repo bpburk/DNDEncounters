@@ -18,6 +18,7 @@ namespace Encounters
         int count = 0;
         Form5 f5;
         string notes = string.Empty;
+        private string ID = string.Empty;
 
         public Form5()
         {
@@ -39,6 +40,7 @@ namespace Encounters
             characterTable.Columns.Add("AC", typeof(int));
             characterTable.Columns.Add("Max Health", typeof(int));
             characterTable.Columns.Add("Notes", typeof(string));
+            characterTable.Columns.Add("ID", typeof(string));
 
             encounterTable = new DataTable("Encounters");
             encounterTable.Columns.Add("Date", typeof(string));
@@ -59,6 +61,7 @@ namespace Encounters
             characterDataTable.Columns["AC"].Visible = false;
             characterDataTable.Columns["Max Health"].Visible = false;
             characterDataTable.Columns["Notes"].Visible = false;
+            characterDataTable.Columns["ID"].Visible = false;
             listBox1.DataSource = encounterProperties.getList();
             textChange();
         }
@@ -89,7 +92,7 @@ namespace Encounters
                 else
                 {
                     encounterProperties.CharactersList[count].encounterDamage(Convert.ToInt32(numericUpDown1.Value));
-                    selectedCharacter.TakeDamage(Convert.ToInt32(numericUpDown1.Value));
+                    selectedCharacter.takeDamage(Convert.ToInt32(numericUpDown1.Value));
                     eventBox.Text += $"Round: {encounterProperties.getRound()}: {encounterProperties.CharactersList[count].getName()} attacked {selectedCharacter.getName()} for " +
                         $"{Convert.ToInt32(numericUpDown1.Value)} points. Their HP is now {selectedCharacter.currentHealth}.";
                 }
@@ -146,6 +149,7 @@ namespace Encounters
                 maxHealthBox.Value = Convert.ToDecimal(characterTable.Rows[index].ItemArray[3]);
                 currentHealthBox.Value = Convert.ToDecimal(characterTable.Rows[index].ItemArray[3]);
                 notes = characterTable.Rows[index].ItemArray[4].ToString();
+                ID = characterTable.Rows[index].ItemArray[5].ToString();
             }
         }
 
@@ -169,6 +173,7 @@ namespace Encounters
             {
                 encounterTable.Rows.Add($"{encounterName.Text} " + DateTime.Now.ToString(), eventBox.Text + encounterProperties.getDamageList());
                 encounterTable.WriteXml("encounterHistory.xml");
+                MessageBox.Show("Encounter has been saved successfully");
             }
             else
             {
@@ -214,10 +219,26 @@ namespace Encounters
                 characterNotesPage characterNotes = new characterNotesPage();
                 characterNotes.getNotes(selectedCharacter.getNotes());
                 characterNotes.getCharacter(selectedCharacter);
-                characterNotes.getEncounterProperties(encounterProperties);
-                characterNotes.getForm(f5);
+                characterNotes.getForm5(f5);
                 characterNotes.Show();
             }
+        }
+
+        public string getID()
+        {
+            return ID;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            nameBox.Clear();
+            ACBox.Value = 0;
+            maxHealthBox.Value = 0;
+            currentHealthBox.Value = 0;
+            initiativeBox.Value = 0;
+            dexBox.Value = 0;
+            notes = string.Empty;
+            ID = string.Empty;
         }
     }
 }

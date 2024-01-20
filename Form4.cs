@@ -12,28 +12,35 @@ namespace Encounters
 {
     public partial class characterNotesPage : System.Windows.Forms.Form
     {
-        GlobalVariables globalVariables;
-        EncounterProperties encounter;
-        Form5 form5;
+        Form5 form5 = null;
+        Form2 form2 = null;
         Characters character;
         bool check = false;
+        string ID = string.Empty;
 
         public characterNotesPage()
         {
             InitializeComponent();
-            
+            textBox1.Enter += new EventHandler(textBox1_Enter);
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            textBox1.SelectionStart = textBox1.Text.Length;
+            textBox1.SelectionLength = 0;
         }
 
         private void saveNotes_Click(object sender, EventArgs e)
         {
             if (check)
             {
+                saveToForm2DataTable(textBox1.Text);
                 GlobalVariables.notes = textBox1.Text;
             }
             else
             {
                 character.setNotes(textBox1.Text);
-                saveToDataTable(textBox1.Text);
+                saveToForm5DataTable(textBox1.Text);
                 form5.updateList();
             }
         }
@@ -48,14 +55,14 @@ namespace Encounters
             this.check = check;
         }
         
-        public void getEncounterProperties(EncounterProperties encounter)
-        {
-            this.encounter = encounter;
-        }
-
-        public void getForm(Form5 form)
+        public void getForm5(Form5 form)
         {
             this.form5 = form;
+        }
+
+        public void getForm2(Form2 form)
+        {
+            this.form2 = form;
         }
 
         public void getCharacter(Characters character)
@@ -63,18 +70,32 @@ namespace Encounters
             this.character = character;
         }
 
-        private void saveToDataTable(string notes)
+        private void saveToForm5DataTable(string notes)
         {
          
-            form5.characterTable.PrimaryKey = new DataColumn[] { form5.characterTable.Columns["Name"] };
+            form5.characterTable.PrimaryKey = new DataColumn[] { form5.characterTable.Columns["ID"] };
 
-            DataRow foundRow = form5.characterTable.Rows.Find(character.getName());
+            DataRow foundRow = form5.characterTable.Rows.Find(character.getID());
 
             if (foundRow != null)
             {
                 foundRow[4] = notes;
                 form5.characterTable.WriteXml("characters.xml");
             }
+        }
+
+        private void saveToForm2DataTable(string notes)
+        {
+
+            form2.characterTable.PrimaryKey = new DataColumn[] { form2.characterTable.Columns["ID"] };
+
+            DataRow foundRow = form2.characterTable.Rows.Find(form2.getID());
+
+            if (foundRow != null)
+            {
+                foundRow[4] = notes;
+                form2.characterTable.WriteXml("characters.xml");
+            }            
         }
     }
 }

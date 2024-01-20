@@ -1,9 +1,4 @@
 <?xml version="1.0" standalone="yes"?>
 <NewDataSet>
-  <Characters>
-    <Name>Aster</Name>
-    <Dex>16</Dex>
-    <AC>16</AC>
-    <Max_x0020_Health>38</Max_x0020_Health>
-  </Characters>
+  
 </NewDataSet>

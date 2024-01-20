@@ -56,6 +56,7 @@
             this.button7 = new System.Windows.Forms.Button();
             this.tempHealthButton = new System.Windows.Forms.Button();
             this.characterNotesButton = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.characterDataTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dexBox)).BeginInit();
@@ -67,32 +68,35 @@
             // 
             // listBox1
             // 
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(12, 82);
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(21, 16);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(356, 564);
+            this.listBox1.Size = new System.Drawing.Size(318, 288);
             this.listBox1.TabIndex = 0;
             // 
             // turnBox
             // 
-            this.turnBox.BackColor = System.Drawing.SystemColors.Window;
-            this.turnBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.turnBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.turnBox.Location = new System.Drawing.Point(12, 16);
+            this.turnBox.BackColor = System.Drawing.Color.Gray;
+            this.turnBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.turnBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold);
+            this.turnBox.ForeColor = System.Drawing.SystemColors.Menu;
+            this.turnBox.Location = new System.Drawing.Point(374, 16);
             this.turnBox.Multiline = true;
             this.turnBox.Name = "turnBox";
             this.turnBox.ReadOnly = true;
-            this.turnBox.Size = new System.Drawing.Size(914, 54);
+            this.turnBox.Size = new System.Drawing.Size(552, 63);
             this.turnBox.TabIndex = 1;
             this.turnBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(664, 137);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button1.Location = new System.Drawing.Point(664, 580);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(262, 23);
+            this.button1.Size = new System.Drawing.Size(262, 36);
             this.button1.TabIndex = 2;
             this.button1.Text = "End Turn";
             this.button1.UseVisualStyleBackColor = true;
@@ -100,9 +104,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(374, 108);
+            this.button2.Location = new System.Drawing.Point(21, 424);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(168, 23);
+            this.button2.Size = new System.Drawing.Size(318, 30);
             this.button2.TabIndex = 3;
             this.button2.Text = "Attack";
             this.button2.UseVisualStyleBackColor = true;
@@ -110,9 +114,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(566, 108);
+            this.button3.Location = new System.Drawing.Point(21, 460);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(168, 23);
+            this.button3.Size = new System.Drawing.Size(318, 30);
             this.button3.TabIndex = 4;
             this.button3.Text = "Heal";
             this.button3.UseVisualStyleBackColor = true;
@@ -120,20 +124,21 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(374, 82);
+            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.numericUpDown1.Location = new System.Drawing.Point(21, 384);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(552, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(318, 23);
             this.numericUpDown1.TabIndex = 5;
             // 
             // eventBox
             // 
             this.eventBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.eventBox.Location = new System.Drawing.Point(374, 166);
+            this.eventBox.Location = new System.Drawing.Point(374, 85);
             this.eventBox.Multiline = true;
             this.eventBox.Name = "eventBox";
             this.eventBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -142,32 +147,37 @@
             // 
             // characterDataTable
             // 
+            this.characterDataTable.AllowUserToAddRows = false;
+            this.characterDataTable.AllowUserToDeleteRows = false;
+            this.characterDataTable.AllowUserToResizeColumns = false;
+            this.characterDataTable.AllowUserToResizeRows = false;
             this.characterDataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.characterDataTable.Location = new System.Drawing.Point(961, 12);
             this.characterDataTable.Name = "characterDataTable";
+            this.characterDataTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.characterDataTable.Size = new System.Drawing.Size(472, 189);
             this.characterDataTable.TabIndex = 7;
             // 
             // nameBox
             // 
-            this.nameBox.Location = new System.Drawing.Point(1026, 290);
+            this.nameBox.Location = new System.Drawing.Point(1015, 276);
             this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(218, 20);
+            this.nameBox.Size = new System.Drawing.Size(370, 20);
             this.nameBox.TabIndex = 8;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(984, 293);
+            this.label1.Location = new System.Drawing.Point(1159, 260);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Name";
+            this.label1.Text = "Character Name";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(958, 349);
+            this.label2.Location = new System.Drawing.Point(1054, 314);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 10;
@@ -176,7 +186,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(944, 411);
+            this.label3.Location = new System.Drawing.Point(1281, 314);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 13);
             this.label3.TabIndex = 11;
@@ -185,16 +195,16 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(998, 474);
+            this.label4.Location = new System.Drawing.Point(1053, 368);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(21, 13);
+            this.label4.Size = new System.Drawing.Size(62, 13);
             this.label4.TabIndex = 12;
-            this.label4.Text = "AC";
+            this.label4.Text = "Armor Class";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(993, 540);
+            this.label5.Location = new System.Drawing.Point(1306, 368);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(26, 13);
             this.label5.TabIndex = 13;
@@ -202,30 +212,30 @@
             // 
             // dexBox
             // 
-            this.dexBox.Location = new System.Drawing.Point(1026, 538);
+            this.dexBox.Location = new System.Drawing.Point(1254, 384);
             this.dexBox.Name = "dexBox";
-            this.dexBox.Size = new System.Drawing.Size(120, 20);
+            this.dexBox.Size = new System.Drawing.Size(131, 20);
             this.dexBox.TabIndex = 14;
             // 
             // ACBox
             // 
-            this.ACBox.Location = new System.Drawing.Point(1026, 472);
+            this.ACBox.Location = new System.Drawing.Point(1015, 384);
             this.ACBox.Name = "ACBox";
-            this.ACBox.Size = new System.Drawing.Size(120, 20);
+            this.ACBox.Size = new System.Drawing.Size(131, 20);
             this.ACBox.TabIndex = 15;
             // 
             // currentHealthBox
             // 
-            this.currentHealthBox.Location = new System.Drawing.Point(1026, 409);
+            this.currentHealthBox.Location = new System.Drawing.Point(1254, 330);
             this.currentHealthBox.Name = "currentHealthBox";
-            this.currentHealthBox.Size = new System.Drawing.Size(120, 20);
+            this.currentHealthBox.Size = new System.Drawing.Size(131, 20);
             this.currentHealthBox.TabIndex = 16;
             // 
             // maxHealthBox
             // 
-            this.maxHealthBox.Location = new System.Drawing.Point(1026, 347);
+            this.maxHealthBox.Location = new System.Drawing.Point(1015, 330);
             this.maxHealthBox.Name = "maxHealthBox";
-            this.maxHealthBox.Size = new System.Drawing.Size(120, 20);
+            this.maxHealthBox.Size = new System.Drawing.Size(131, 20);
             this.maxHealthBox.TabIndex = 17;
             // 
             // button4
@@ -241,7 +251,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(973, 604);
+            this.label6.Location = new System.Drawing.Point(1178, 433);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 19;
@@ -249,16 +259,17 @@
             // 
             // initiativeBox
             // 
-            this.initiativeBox.Location = new System.Drawing.Point(1026, 602);
+            this.initiativeBox.Location = new System.Drawing.Point(1134, 449);
             this.initiativeBox.Name = "initiativeBox";
-            this.initiativeBox.Size = new System.Drawing.Size(120, 20);
+            this.initiativeBox.Size = new System.Drawing.Size(131, 20);
             this.initiativeBox.TabIndex = 20;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(1210, 535);
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button5.Location = new System.Drawing.Point(1015, 526);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(223, 82);
+            this.button5.Size = new System.Drawing.Size(370, 39);
             this.button5.TabIndex = 21;
             this.button5.Text = "Add to encounter";
             this.button5.UseVisualStyleBackColor = true;
@@ -266,7 +277,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(503, 716);
+            this.button6.Location = new System.Drawing.Point(539, 675);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(223, 23);
             this.button6.TabIndex = 22;
@@ -277,7 +288,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(410, 680);
+            this.label7.Location = new System.Drawing.Point(605, 633);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(87, 13);
             this.label7.TabIndex = 23;
@@ -285,26 +296,27 @@
             // 
             // encounterName
             // 
-            this.encounterName.Location = new System.Drawing.Point(503, 677);
+            this.encounterName.Location = new System.Drawing.Point(539, 649);
             this.encounterName.Name = "encounterName";
             this.encounterName.Size = new System.Drawing.Size(223, 20);
             this.encounterName.TabIndex = 24;
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(374, 137);
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button7.Location = new System.Drawing.Point(374, 580);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(284, 23);
+            this.button7.Size = new System.Drawing.Size(284, 36);
             this.button7.TabIndex = 25;
-            this.button7.Text = "Go Back";
+            this.button7.Text = "Go Back to Previous Character";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // tempHealthButton
             // 
-            this.tempHealthButton.Location = new System.Drawing.Point(758, 108);
+            this.tempHealthButton.Location = new System.Drawing.Point(21, 496);
             this.tempHealthButton.Name = "tempHealthButton";
-            this.tempHealthButton.Size = new System.Drawing.Size(168, 23);
+            this.tempHealthButton.Size = new System.Drawing.Size(318, 30);
             this.tempHealthButton.TabIndex = 26;
             this.tempHealthButton.Text = "Add Temp Health";
             this.tempHealthButton.UseVisualStyleBackColor = true;
@@ -312,19 +324,32 @@
             // 
             // characterNotesButton
             // 
-            this.characterNotesButton.Location = new System.Drawing.Point(12, 652);
+            this.characterNotesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.characterNotesButton.Location = new System.Drawing.Point(21, 314);
             this.characterNotesButton.Name = "characterNotesButton";
-            this.characterNotesButton.Size = new System.Drawing.Size(356, 22);
+            this.characterNotesButton.Size = new System.Drawing.Size(318, 30);
             this.characterNotesButton.TabIndex = 27;
             this.characterNotesButton.Text = "Check Character Notes";
             this.characterNotesButton.UseVisualStyleBackColor = true;
             this.characterNotesButton.Click += new System.EventHandler(this.characterNotesButton_Click);
+            // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button8.Location = new System.Drawing.Point(1015, 579);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(370, 39);
+            this.button8.TabIndex = 28;
+            this.button8.Text = "Clear Character Data";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1473, 751);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.characterNotesButton);
             this.Controls.Add(this.tempHealthButton);
             this.Controls.Add(this.button7);
@@ -397,5 +422,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button tempHealthButton;
         private System.Windows.Forms.Button characterNotesButton;
+        private System.Windows.Forms.Button button8;
     }
 }
