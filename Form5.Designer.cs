@@ -204,15 +204,15 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1306, 368);
+            this.label5.Location = new System.Drawing.Point(1159, 424);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(26, 13);
+            this.label5.Size = new System.Drawing.Size(79, 13);
             this.label5.TabIndex = 13;
-            this.label5.Text = "Dex";
+            this.label5.Text = "Initiative Bonus";
             // 
             // dexBox
             // 
-            this.dexBox.Location = new System.Drawing.Point(1254, 384);
+            this.dexBox.Location = new System.Drawing.Point(1129, 440);
             this.dexBox.Name = "dexBox";
             this.dexBox.Size = new System.Drawing.Size(131, 20);
             this.dexBox.TabIndex = 14;
@@ -251,7 +251,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1178, 433);
+            this.label6.Location = new System.Drawing.Point(1296, 368);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 19;
@@ -259,7 +259,7 @@
             // 
             // initiativeBox
             // 
-            this.initiativeBox.Location = new System.Drawing.Point(1134, 449);
+            this.initiativeBox.Location = new System.Drawing.Point(1254, 384);
             this.initiativeBox.Name = "initiativeBox";
             this.initiativeBox.Size = new System.Drawing.Size(131, 20);
             this.initiativeBox.TabIndex = 20;

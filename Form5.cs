@@ -19,6 +19,7 @@ namespace Encounters
         Form5 f5;
         string notes = string.Empty;
         private string ID = string.Empty;
+        string name = string.Empty;
 
         public Form5()
         {
@@ -34,6 +35,8 @@ namespace Encounters
 
         private void Form5_Load(object sender, EventArgs e)
         {
+            eventBox.Text += $"   ------------------------------------------- Round {encounterProperties.getRound()} -------------------------------------------";
+            eventBox.Text += Environment.NewLine;
             characterTable = new DataTable("Characters");
             characterTable.Columns.Add("Name", typeof(string));
             characterTable.Columns.Add("Dex", typeof(int));
@@ -70,8 +73,11 @@ namespace Encounters
         {
             if (++count == encounterProperties.CharactersList.Count())
             {
-                count = 0;
                 encounterProperties.increaseRound();
+                eventBox.Text += Environment.NewLine;
+                eventBox.Text += $"   ------------------------------------------- Round {encounterProperties.getRound()} -------------------------------------------";
+                eventBox.Text += Environment.NewLine;
+                count = 0;
             }
                 
             textChange();
@@ -88,12 +94,12 @@ namespace Encounters
             {
                 Characters selectedCharacter = (Characters)listBox1.SelectedItem;
                 if(Convert.ToInt32(numericUpDown1.Value) == 0)
-                    eventBox.Text += $"Round: {encounterProperties.getRound()}: {encounterProperties.CharactersList[count].getName()} missed their attack on {selectedCharacter.getName()}.";
+                    eventBox.Text += $"{encounterProperties.CharactersList[count].getName()} missed their attack on {selectedCharacter.getName()}.";
                 else
                 {
                     encounterProperties.CharactersList[count].encounterDamage(Convert.ToInt32(numericUpDown1.Value));
                     selectedCharacter.takeDamage(Convert.ToInt32(numericUpDown1.Value));
-                    eventBox.Text += $"Round: {encounterProperties.getRound()}: {encounterProperties.CharactersList[count].getName()} attacked {selectedCharacter.getName()} for " +
+                    eventBox.Text += $"{encounterProperties.CharactersList[count].getName()} attacked {selectedCharacter.getName()} for " +
                         $"{Convert.ToInt32(numericUpDown1.Value)} points. Their HP is now {selectedCharacter.currentHealth}.";
                 }
                 eventBox.AppendText(Environment.NewLine);
@@ -110,13 +116,13 @@ namespace Encounters
                 if (selectedCharacter == encounterProperties.CharactersList[count])
                 {
                     selectedCharacter.Heal(Convert.ToInt32(numericUpDown1.Value));
-                    eventBox.Text += $"Round: {encounterProperties.getRound()}: {encounterProperties.CharactersList[count].getName()} healed themselves for " +
+                    eventBox.Text += $"{encounterProperties.CharactersList[count].getName()} healed themselves for " +
                         $"{Convert.ToInt32(numericUpDown1.Value)} points. Their HP is now {selectedCharacter.currentHealth}.";
                 }
                 else
                 {
                     selectedCharacter.Heal(Convert.ToInt32(numericUpDown1.Value));
-                    eventBox.Text += $"Round: {encounterProperties.getRound()}: {encounterProperties.CharactersList[count].getName()} healed {selectedCharacter.getName()} for " +
+                    eventBox.Text += $"{encounterProperties.CharactersList[count].getName()} healed {selectedCharacter.getName()} for " +
                         $"{Convert.ToInt32(numericUpDown1.Value)} points. Their HP is now {selectedCharacter.currentHealth}.";
                 }
                 eventBox.AppendText(Environment.NewLine);
@@ -150,21 +156,31 @@ namespace Encounters
                 currentHealthBox.Value = Convert.ToDecimal(characterTable.Rows[index].ItemArray[3]);
                 notes = characterTable.Rows[index].ItemArray[4].ToString();
                 ID = characterTable.Rows[index].ItemArray[5].ToString();
+                name = characterTable.Rows[index].ItemArray[0].ToString();
             }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Characters character = new Characters(nameBox.Text, Convert.ToInt32(ACBox.Value), Convert.ToInt32(initiativeBox.Value), Convert.ToInt32(dexBox.Value), Convert.ToInt32(maxHealthBox.Value), Convert.ToInt32(currentHealthBox.Value));
-            character.setNotes(notes);
-            notes = string.Empty;
-            if (character.initiative > encounterProperties.CharactersList[count].initiative)
-                count++;
-            eventBox.Text += $"Round {encounterProperties.getRound()}: {character.getName()} has been added to the encounter. Initiative: {character.initiative}";
-            eventBox.AppendText(Environment.NewLine);
-            encounterProperties.AddCharacter(character);
-            encounterProperties.orderList();
-            updateList();
+            if (name == nameBox.Text || name == String.Empty)
+            {
+                Characters character = new Characters(nameBox.Text, Convert.ToInt32(ACBox.Value), Convert.ToInt32(initiativeBox.Value), Convert.ToInt32(dexBox.Value), Convert.ToInt32(maxHealthBox.Value), Convert.ToInt32(currentHealthBox.Value));
+                character.setNotes(notes);
+                notes = string.Empty;
+                character.setID(ID);
+                ID = String.Empty;
+                if (character.initiative > encounterProperties.CharactersList[count].initiative)
+                    count++;
+                eventBox.Text += $"{character.getName()} has been added to the encounter. Initiative: {character.initiative}";
+                eventBox.AppendText(Environment.NewLine);
+                encounterProperties.AddCharacter(character);
+                encounterProperties.orderList();
+                updateList();
+            }
+            else
+            {
+                MessageBox.Show("After inputting from data table, add character to encounter or clear all fields");
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -204,7 +220,7 @@ namespace Encounters
             {
                 Characters selectedCharacter = (Characters)listBox1.SelectedItem;
                 selectedCharacter.setTempHealth(Convert.ToInt32(numericUpDown1.Value));
-                eventBox.Text += $"Round: {encounterProperties.getRound()}: {encounterProperties.CharactersList[count].getName()} gave {selectedCharacter.getName()} " +
+                eventBox.Text += $"{encounterProperties.CharactersList[count].getName()} gave {selectedCharacter.getName()} " +
                        $"{Convert.ToInt32(numericUpDown1.Value)} temporary hit points. Their HP is now {selectedCharacter.currentHealth + selectedCharacter.tempHealth}.";
                 eventBox.AppendText(Environment.NewLine);
                 updateList();
@@ -239,6 +255,7 @@ namespace Encounters
             dexBox.Value = 0;
             notes = string.Empty;
             ID = string.Empty;
+            name = string.Empty;
         }
     }
 }

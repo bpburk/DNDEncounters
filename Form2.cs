@@ -35,7 +35,7 @@ namespace Encounters
             {
                 a = random.Next(20, 100);
                 b = random.Next(200, 350);
-                c = random.Next(1500, 2000);
+                c = random.Next(1, 5000);
                 d = random.Next(1, 5);
 
                 total = a * b + c;
@@ -158,6 +158,10 @@ namespace Encounters
 
                 if (foundRow != null)
                 {
+                    foundRow[0] = nameBox.Text;
+                    foundRow[1] = dexBox.Value;
+                    foundRow[2] = ACBox.Value;
+                    foundRow[3] = maxHealthBox.Value;
                     foundRow[4] = GlobalVariables.notes;
                     characterTable.WriteXml("characters.xml");
                 }

@@ -14,7 +14,6 @@ namespace Encounters
         public String name { get; set; }
         public int AC { get; set; }
         public int initiative { get; set; }
-        public int initiativeBonus { get; set; }
         public int dex { get; set; }
         public int currentHealth { get; set; }
         public int maxHealth { get; set; }
@@ -43,24 +42,11 @@ namespace Encounters
 
         public int setInitiative(int original)
         {
-            if (dex < 10)
-                initiativeBonus = -1;
-            else if (dex < 12)
-                initiativeBonus = 0;
-            else if (dex < 14)
-                initiativeBonus = 1;
-            else if (dex < 16)
-                initiativeBonus = 2;
-            else if (dex < 18)
-                initiativeBonus = 3;
-            else if (dex < 20)
-                initiativeBonus = 4;
-            else
-                initiativeBonus = 5;
+            
             if(original == 0)
-                return random.Next(1, 21) + initiativeBonus;
+                return random.Next(1, 21) + dex;
             else
-                return original + initiativeBonus;
+                return original + dex;
             
         }
 
