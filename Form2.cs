@@ -19,6 +19,7 @@ namespace Encounters
         EncounterProperties encounterProperties = new EncounterProperties();
         Form2 f2;
         private string ID = string.Empty;
+        public string notes = string.Empty;
 
         public Form2()
         {
@@ -110,7 +111,7 @@ namespace Encounters
             else
             {
                 Characters character = new Characters(nameBox.Text, Convert.ToInt32(ACBox.Value), Convert.ToInt32(initiativeBox.Value), Convert.ToInt32(dexBox.Value), Convert.ToInt32(maxHealthBox.Value), Convert.ToInt32(currentHealthBox.Value));
-                character.setNotes(GlobalVariables.notes);
+                character.setNotes(notes);
                 if(ID != string.Empty)
                 {
                     character.setID(ID);
@@ -138,7 +139,7 @@ namespace Encounters
                 ACBox.Value = Convert.ToDecimal(characterTable.Rows[index].ItemArray[2]);
                 maxHealthBox.Value = Convert.ToDecimal(characterTable.Rows[index].ItemArray[3]);
                 currentHealthBox.Value = Convert.ToDecimal(characterTable.Rows[index].ItemArray[3]);
-                GlobalVariables.notes = characterTable.Rows[index].ItemArray[4].ToString();
+                notes = characterTable.Rows[index].ItemArray[4].ToString();
                 ID = characterTable.Rows[index].ItemArray[5].ToString();
             }
         }
@@ -162,13 +163,13 @@ namespace Encounters
                     foundRow[1] = dexBox.Value;
                     foundRow[2] = ACBox.Value;
                     foundRow[3] = maxHealthBox.Value;
-                    foundRow[4] = GlobalVariables.notes;
+                    foundRow[4] = notes;
                     characterTable.WriteXml("characters.xml");
                 }
                 else
                 {
                     ID = createUniqueID();
-                    characterTable.Rows.Add(nameBox.Text, dexBox.Value, ACBox.Value, maxHealthBox.Value, GlobalVariables.notes, ID);
+                    characterTable.Rows.Add(nameBox.Text, dexBox.Value, ACBox.Value, maxHealthBox.Value, notes, ID);
                     characterTable.WriteXml("characters.xml");
                 } 
             }
@@ -182,7 +183,7 @@ namespace Encounters
             currentHealthBox.Value = 0;
             initiativeBox.Value = 0;
             dexBox.Value = 0;
-            GlobalVariables.notes = string.Empty;
+            notes = string.Empty;
             ID = string.Empty;
         }
 
@@ -228,7 +229,7 @@ namespace Encounters
         private void characterNotes_Click(object sender, EventArgs e)
         {
             characterNotesPage notePage = new characterNotesPage();
-            notePage.getNotes(GlobalVariables.notes);
+            notePage.getNotes(notes);
             notePage.getForm2(f2);
             notePage.getCheck(true);
             notePage.Show();
@@ -236,7 +237,7 @@ namespace Encounters
 
         public void getNotes(string textbox)
         {
-            GlobalVariables.notes = textbox;
+            notes = textbox;
         }
 
         public string getNameBox()

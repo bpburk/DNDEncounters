@@ -16,7 +16,6 @@ namespace Encounters
         Form2 form2 = null;
         Characters character;
         bool check = false;
-        string ID = string.Empty;
 
         public characterNotesPage()
         {
@@ -35,7 +34,7 @@ namespace Encounters
             if (check)
             {
                 saveToForm2DataTable(textBox1.Text);
-                GlobalVariables.notes = textBox1.Text;
+                form2.notes = textBox1.Text;
             }
             else
             {

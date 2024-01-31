@@ -257,5 +257,19 @@ namespace Encounters
             ID = string.Empty;
             name = string.Empty;
         }
+
+        private void takeDamage_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItems.Count > 0)
+            {
+                Characters selectedCharacter = (Characters)listBox1.SelectedItem;
+                selectedCharacter.encounterDamage(Convert.ToInt32(numericUpDown1.Value));
+                encounterProperties.CharactersList[count].takeDamage(Convert.ToInt32(numericUpDown1.Value));
+                eventBox.Text += $"{encounterProperties.CharactersList[count].getName()} took {Convert.ToInt32(numericUpDown1.Value)} points of damage from {selectedCharacter.getName()} on their turn. " +
+                        $"Their HP is now {encounterProperties.CharactersList[count].currentHealth}.";
+                eventBox.AppendText(Environment.NewLine);
+                updateList();
+            }
+        }
     }
 }

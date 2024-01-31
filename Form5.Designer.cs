@@ -57,6 +57,7 @@
             this.tempHealthButton = new System.Windows.Forms.Button();
             this.characterNotesButton = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.takeDamage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.characterDataTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dexBox)).BeginInit();
@@ -344,11 +345,22 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // takeDamage
+            // 
+            this.takeDamage.Location = new System.Drawing.Point(21, 535);
+            this.takeDamage.Name = "takeDamage";
+            this.takeDamage.Size = new System.Drawing.Size(318, 30);
+            this.takeDamage.TabIndex = 29;
+            this.takeDamage.Text = "Take Damage From";
+            this.takeDamage.UseVisualStyleBackColor = true;
+            this.takeDamage.Click += new System.EventHandler(this.takeDamage_Click);
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1473, 751);
+            this.Controls.Add(this.takeDamage);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.characterNotesButton);
             this.Controls.Add(this.tempHealthButton);
@@ -423,5 +435,6 @@
         private System.Windows.Forms.Button tempHealthButton;
         private System.Windows.Forms.Button characterNotesButton;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button takeDamage;
     }
 }
